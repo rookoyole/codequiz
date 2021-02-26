@@ -1,13 +1,13 @@
 // Change button color on hover
 function buttonOver() {
     b1E1.style.backgroundColor = "#d729dd";
-    document.body.appendChild(b1E1);
+    divEle.appendChild(b1E1);
   }
 
 // Change button color leaving a button
 function buttonOut() {
     b1E1.style.backgroundColor = "#247BA0";
-    document.body.appendChild(b1E1);
+    divEle.appendChild(b1E1);
   }
 
 // Displays the current count on the page
@@ -40,9 +40,12 @@ body.appendChild(h3El);
 //var startButton = document.createElement("BUTTON");
 //body.appendChild(startButton);
 
+// Add a centered div for button
+var divEle = document.createElement('div');
+divEle.setAttribute('style', 'margin:auto; width:50%; text-align:center;');
+
 var b1E1 = document.createElement("BUTTON");
 var b1E1Text = document.createTextNode("Start Quiz");
-//b1El.setAttribute('style', 'padding:10px; margin:24px; cursor:pointer; font-size:24px; backgroundColor: #247BA0; color:white;');
 b1E1.style.padding = "8px 15px";
 b1E1.style.margin = "24px";
 b1E1.style.cursor = "pointer";
@@ -50,9 +53,15 @@ b1E1.style.fontSize = "20px";
 b1E1.style.backgroundColor = "#247BA0";
 b1E1.style.color = "white";
 b1E1.style.borderRadius = "8px";
+
+// Add text to button
 b1E1.appendChild(b1E1Text);
-document.body.appendChild(b1E1);
+// Add button to div
+divEle.appendChild(b1E1);
+// Add div to body
+document.body.appendChild(divEle);
 
 // Increments the count on click and calls setCounterText()
 b1E1.addEventListener("mouseover", buttonOver);
 b1E1.addEventListener("mouseout", buttonOut);
+
