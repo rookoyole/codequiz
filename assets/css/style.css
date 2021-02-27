@@ -1,0 +1,24 @@
+#container {
+    text-align: center;
+}
+
+#start h1,h3 {
+    font-family: verdana;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+#start button {
+    padding: 8px 15px;
+    margin: 24px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #247BA0;
+    color: white;
+    border-radius: 8px;
+}
+
+#start button:hover {
+    background-color: #d729dd;
+}
