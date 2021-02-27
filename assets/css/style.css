@@ -1,5 +1,5 @@
 #container {
-    text-align: center;
+   // text-align: center;
 }
 
 #start h1,h3 {
@@ -20,5 +20,34 @@
 }
 
 #start button:hover {
+    background-color: #d729dd;
+}
+
+#question h1 {
+    font-family: verdana;
+    width: 50%;
+    margin: auto;
+   // text-align: left;
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 15%;
+    
+}
+
+#A button, #B button, #C button, #D button {
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #247BA0;
+    color: white;
+    border-radius: 8px;
+    text-align: left;
+}
+#choices button:hover {
     background-color: #d729dd;
 }

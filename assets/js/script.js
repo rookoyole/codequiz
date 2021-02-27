@@ -2,67 +2,67 @@
 var body = document.body;
 
 // select all elements
-const start = document.getElementById("start");
-const quiz = document.getElementById("quiz");
-const question = document.getElementById("question");
-const choiceA = document.getElementById("A");
-const choiceB = document.getElementById("B");
-const choiceC = document.getElementById("C");
-const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
-const progress = document.getElementById("progress");
-const scoreDiv = document.getElementById("scoreContainer");
+var scoreDiv = document.getElementById("scores");
+var timer = document.getElementById("timer");
+var start = document.getElementById("start");
+var quiz = document.getElementById("quiz");
+var question = document.getElementById("question");
+var selectA = document.getElementById("A");
+var selectB = document.getElementById("B");
+var selectC = document.getElementById("C");
+var selectD = document.getElementById("D");
 
-// Creating variables for tracking elements
-
-var lastQuestion = questions.length - 1;
-var runningQuestion = 0;
-var count = 0;
-var questionTime = 10; // 10s
-var gaugeWidth = 150; // 150px
-var gaugeUnit = gaugeWidth / questionTime;
-var TIMER;
-var score = 0;
 
 // create our questions
 var questions = [
     {
         question : "How is everything treated in HTML DOM?",
-        //correct = A
-        choiceA : "Node",
-        choiceB : "Attributes",
-        choiceC : "Elements",
-        correct : "Arrays"
+        selectA : "Node",
+        selectB : "Attributes",
+        selectC : "Elements",
+        selectD : "Arrays",
+        correct : "A"
     },{
         question : "How are the objects organized in the HTML DOM?",
-        //correct = c
-        choiceA : "Class-wise",
-        choiceB : "Queue",
-        choiceC : "Hierarchy",
-        correct : "Stack"
+        selectA : "Class-wise",
+        selectB : "Queue",
+        selectC : "Hierarchy",
+        selectD : "Stack",
+        correct : "C"
     },{
         question : "Which of the following is a type of HTML DOM?",
-        //correct = d
-        choiceA : "Legacy DOM",
-        choiceB : "W3C DOM",
-        choiceC : "IE4 DOM",
-        correct : "All of the above"
+        selectA : "Legacy DOM",
+        selectB : "W3C DOM",
+        selectC : "IE4 DOM",
+        selectD : "All of the above",
+        correct : "D"
     },{
         question : "What is the purpose of the Attr object in the HTML DOM?",
-        //correct = b
-        choiceA : "Used to focus on a particular part of the HTML page",
-        choiceB : "HTML Attribute",
-        choiceC : "Used to arrange elements",
-        correct : "CSS attribute"
+        selectA : "Used to focus on a particular part of the HTML page",
+        selectB : "HTML Attribute",
+        selectC : "Used to arrange elements",
+        selectD : "CSS attribute",
+        correct : "B"
     },{
         question : "What is the reason for avoiding the attributes property in the HTML DOM?",
-        //correct = b
-        choiceA : "Found unnecessary",
-        choiceB : "Attributes don’t have attributes",
-        choiceC : "Attributes have attributes",
-        correct : "Considered irrelevant"
+        selectA : "Found unnecessary",
+        selectB : "Attributes don’t have attributes",
+        selectC : "Attributes have attributes",
+        selectD : "Considered irrelevant",
+        correct : "B"
     }
 ];
+
+// Creating variables for tracking elements
+
+var lastQuestion = questions.length - 1;
+var currentQuestion = 0;
+//var count = 0;
+//var questionTime = 10; // 10s
+//var gaugeWidth = 150; // 150px
+//var gaugeUnit = gaugeWidth / questionTime;
+//var TIMER;
+//var score = 0;
 
 var h1Start = document.createElement('h1');
 // We add text by using the `textContent` property
@@ -76,62 +76,60 @@ h3Start.textContent =
 start.appendChild(h3Start);
 
 var b1Start = document.createElement("BUTTON");
-var b1StartText = document.createTextNode("Start Quiz");
-// Add text to button
-b1Start.appendChild(b1StartText);
+// Add text to button and append to div
+b1Start.textContent = "Start Quiz";
 start.appendChild(b1Start);
 
-/*
+b1Start.addEventListener("click",startQuiz);
+
 // Start quiz
 function startQuiz(){
     start.style.display = "none";
     showQuestion();
-    quiz.style.display = "block";
-    renderProgress();
-    renderCounter();
-    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+    countdown();
+    //TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
 // Show a question function
 function showQuestion(){
-    let q = questions[runningQuestion];
-    
-    question.innerHTML = "<p>"+ q.question +"</p>";
-    qImg.innerHTML = "<img src="+ q.imgSrc +">";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
+    var q = questions[currentQuestion];
+    console.log(q);
+    question.innerHTML = "<h1>"+ q.question +"</h1>";
+
+    // Create 4 buttons to select from
+    var b1Q1 = document.createElement("BUTTON");
+    b1Q1.textContent = "1. " + q.selectA;
+    selectA.appendChild(b1Q1);
+    var b1Q2 = document.createElement("BUTTON");
+    b1Q2.textContent = "2. " + q.selectB;
+    selectB.appendChild(b1Q2);
+    var b1Q3 = document.createElement("BUTTON");
+    b1Q3.textContent = "3. " + q.selectC;
+    selectC.appendChild(b1Q3);
+    var b1Q4 = document.createElement("BUTTON");
+    b1Q4.textContent = "4. " + q.selectD;
+    selectD.appendChild(b1Q4);
 }
 
-start.addEventListener("click",startQuiz);
-
-
-
-// Starts quiz with first button click
-b1E1.addEventListener('click', function() {
-    // Remove Start heading and button
-    h3El.remove();
-    b1E1.remove();
-    
-    h1El.textContent = '1st question';
-    
-    divEle.setAttribute('style', 'margin:auto; width:50%; text-align:left;');
-
-    var b1Q1 = document.createElement("BUTTON");
-    var b1Q1Text = document.createTextNode("Answer 1");
-    b1Q1.style.padding = "8px 15px";
-    b1Q1.style.margin = "24px";
-    b1Q1.style.cursor = "pointer";
-    b1Q1.style.fontSize = "20px";
-    b1Q1.style.backgroundColor = "#247BA0";
-    b1Q1.style.color = "white";
-    b1Q1.style.borderRadius = "8px";
-
-    // Add text to button
-    b1Q1.appendChild(b1Q1Text);
-    // Add button to div
-    divEle.appendChild(b1Q1);
-    // Add div to body
-    body.appendChild(divEle);
-});
-*/
+// Timer that counts down from 5
+function countdown() {
+    var timeLeft = 75;
+  
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeInterval = setInterval(function() {
+      // As long as the `timeLeft` is greater than 1
+      if (timeLeft > 1) {
+        // Set the `textContent` of `timerEl` to show the remaining seconds
+        timer.textContent = 'Time: ' + timeLeft;
+        // Decrement `timeLeft` by 1
+        timeLeft--;
+      } else {
+        // Once `timeLeft` gets to 0, set `timer` to an empty string
+        timer.textContent = '';
+        // Use `clearInterval()` to stop the timer
+        clearInterval(timeInterval);
+        // Call the `displayMessage()` function
+        displayMessage();
+      }
+    }, 1000);
+  }
