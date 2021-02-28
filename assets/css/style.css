@@ -1,5 +1,12 @@
+#timer {
+    text-align: right;
+    font-family: verdana;
+    padding: 10px 100px;
+    margin: 24px;
+}
+
 #container {
-   // text-align: center;
+    text-align: center;
 }
 
 #start h1,h3 {
@@ -27,7 +34,7 @@
     font-family: verdana;
     width: 50%;
     margin: auto;
-   // text-align: left;
+    text-align: left;
 }
 
 .select {
@@ -50,4 +57,11 @@
 }
 #choices button:hover {
     background-color: #d729dd;
+}
+
+#result {
+    font-family: verdana;
+    width: 50%;
+    margin: auto;
+    text-align: center;
 }

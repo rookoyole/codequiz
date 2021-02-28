@@ -11,7 +11,7 @@ var selectA = document.getElementById("A");
 var selectB = document.getElementById("B");
 var selectC = document.getElementById("C");
 var selectD = document.getElementById("D");
-
+var result = document.getElementById("result");
 
 // create our questions
 var questions = [
@@ -54,67 +54,56 @@ var questions = [
 ];
 
 // Creating variables for tracking elements
-
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
-//var count = 0;
-//var questionTime = 10; // 10s
-//var gaugeWidth = 150; // 150px
-//var gaugeUnit = gaugeWidth / questionTime;
-//var TIMER;
-//var score = 0;
+var timeLeft = 75;
+var score = 0;
 
 var h1Start = document.createElement('h1');
 // We add text by using the `textContent` property
 h1Start.textContent = 'Coding Quiz Challenge';
 // Append the newly created element to the DOM using `appendChild()`
 start.appendChild(h1Start);
-
+// Create header for starting information
 var h3Start = document.createElement('h3');
 h3Start.textContent =
   'Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize you score/time by ten seconds!';
 start.appendChild(h3Start);
-
+// Create start button
 var b1Start = document.createElement("BUTTON");
 // Add text to button and append to div
 b1Start.textContent = "Start Quiz";
 start.appendChild(b1Start);
-
-b1Start.addEventListener("click",startQuiz);
+// Create buttons for question
+var b1Q1 = document.createElement("BUTTON");
+var b1Q2 = document.createElement("BUTTON");
+var b1Q3 = document.createElement("BUTTON");
+var b1Q4 = document.createElement("BUTTON");
 
 // Start quiz
 function startQuiz(){
-    start.style.display = "none";
-    showQuestion();
     countdown();
-    //TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+    start.style.display = "none";
+    showButtons();
 }
 
-// Show a question function
-function showQuestion(){
+// Show question buttons
+function showButtons() {
     var q = questions[currentQuestion];
-    console.log(q);
     question.innerHTML = "<h1>"+ q.question +"</h1>";
-
     // Create 4 buttons to select from
-    var b1Q1 = document.createElement("BUTTON");
     b1Q1.textContent = "1. " + q.selectA;
     selectA.appendChild(b1Q1);
-    var b1Q2 = document.createElement("BUTTON");
     b1Q2.textContent = "2. " + q.selectB;
     selectB.appendChild(b1Q2);
-    var b1Q3 = document.createElement("BUTTON");
     b1Q3.textContent = "3. " + q.selectC;
     selectC.appendChild(b1Q3);
-    var b1Q4 = document.createElement("BUTTON");
     b1Q4.textContent = "4. " + q.selectD;
     selectD.appendChild(b1Q4);
 }
 
-// Timer that counts down from 5
+// Timer that counts down from 75 seconds
 function countdown() {
-    var timeLeft = 75;
-  
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function() {
       // As long as the `timeLeft` is greater than 1
@@ -129,7 +118,41 @@ function countdown() {
         // Use `clearInterval()` to stop the timer
         clearInterval(timeInterval);
         // Call the `displayMessage()` function
-        displayMessage();
+        //finalScore();
       }
     }, 1000);
-  }
+}
+
+function checkAnswer(answer){
+    if (answer == questions[currentQuestion].correct) {
+        //score++;
+        // Message indicating the answer is correct
+        answerIsCorrect();
+    } else {
+        timeLeft = timeLeft - 10;
+        // Message indicating the answer is wrong
+        answerIsWrong();
+    }
+    if (currentQuestion < lastQuestion) {
+        currentQuestion++;
+        //choices.style.display = "none";
+        showButtons();
+    } else {
+        // end the quiz and show the score
+        clearInterval(timer);
+        //finalScore();
+    }
+}
+
+// answer is correct
+function answerIsCorrect(){
+    result.textContent = 'Correct!';
+}
+
+// answer is Wrong
+function answerIsWrong(){
+    result.textContent = 'Wrong!';
+}
+
+
+b1Start.addEventListener("click",startQuiz);
