@@ -146,12 +146,22 @@ function checkAnswer(answer){
 
 // answer is correct
 function answerIsCorrect(){
+    //var h1Correct = document.createElement('h2');
     result.textContent = 'Correct!';
+    //result.appendChild(h1Correct);
+    document.getElementById("result").style.borderStyle = "solid none none none";
+    document.getElementById("result").style.borderWidth = "thin";
+    document.getElementById("result").style.borderColor = "gray";
 }
 
 // answer is Wrong
 function answerIsWrong(){
+    //var h1Wrong = document.createElement('h2');
     result.textContent = 'Wrong!';
+    //result.appendChild(h1Wrong);
+    document.getElementById("result").style.borderStyle = "solid none none none";
+    document.getElementById("result").style.borderWidth = "thin";
+    document.getElementById("result").style.borderColor = "gray";
 }
 
 

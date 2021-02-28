@@ -33,7 +33,29 @@ Kyle William Ryan
                 <div id="result"></div>
             </div>
         </div>
-        <div id="scoreContainer" style="display: none"></div>
+        <div class="card">
+            <form method="POST">
+                <div class="input-group">
+                    <label for="initials"></label>
+                    <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="janedoe@mail.com"
+                    />
+                </div>
+              <div id="msg"></div>
+              <button id="submit" onclick="submit('submit')"></button>
+            </form>
+        </div>
+        <div id="scoresContainer">
+            <div id="highScores"></div>
+            <div id="list"></div>
+            <div id="end">
+                <div class="select" id="goBack" onclick="goBack('goBack')"></div>
+                <div class="select" id="clear" onclick="clear('clear')"></div>
+            </div>
+        </div>
     </div>
     <script src="./assets/js/script.js"></script>
 </body>
