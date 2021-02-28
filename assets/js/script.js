@@ -12,6 +12,9 @@ var selectB = document.getElementById("B");
 var selectC = document.getElementById("C");
 var selectD = document.getElementById("D");
 var result = document.getElementById("result");
+var card = document.getElementById("card");
+var inputGroup = document.getElementById("input-group");
+var labelEl = document.getElementById("enter");
 
 // create our questions
 var questions = [
@@ -79,6 +82,12 @@ var b1Q1 = document.createElement("BUTTON");
 var b1Q2 = document.createElement("BUTTON");
 var b1Q3 = document.createElement("BUTTON");
 var b1Q4 = document.createElement("BUTTON");
+var b1Sub = document.createElement("BUTTON");
+
+var h1Init = document.createElement('h1');
+var h3Init = document.createElement('h3');
+var inputEl = document.createElement("INPUT");
+//var labelEl = document.createElement("LABEL");
 
 // Start quiz
 function startQuiz(){
@@ -117,8 +126,6 @@ function countdown() {
         timer.textContent = '';
         // Use `clearInterval()` to stop the timer
         clearInterval(timeInterval);
-        // Call the `displayMessage()` function
-        //finalScore();
       }
     }, 1000);
 }
@@ -135,20 +142,19 @@ function checkAnswer(answer){
     }
     if (currentQuestion < lastQuestion) {
         currentQuestion++;
-        //choices.style.display = "none";
         showButtons();
     } else {
         // end the quiz and show the score
         clearInterval(timer);
-        //finalScore();
+        //debugger;
+        quiz.style.display = "none";
+        finalScore();
     }
 }
 
 // answer is correct
 function answerIsCorrect(){
-    //var h1Correct = document.createElement('h2');
     result.textContent = 'Correct!';
-    //result.appendChild(h1Correct);
     document.getElementById("result").style.borderStyle = "solid none none none";
     document.getElementById("result").style.borderWidth = "thin";
     document.getElementById("result").style.borderColor = "gray";
@@ -156,13 +162,37 @@ function answerIsCorrect(){
 
 // answer is Wrong
 function answerIsWrong(){
-    //var h1Wrong = document.createElement('h2');
     result.textContent = 'Wrong!';
-    //result.appendChild(h1Wrong);
     document.getElementById("result").style.borderStyle = "solid none none none";
     document.getElementById("result").style.borderWidth = "thin";
     document.getElementById("result").style.borderColor = "gray";
 }
 
+// Show final score and submit initials
+function finalScore() {
+    h3Init.textContent = 'Your final score is ' + timeLeft + '.';
+    card.prepend(h3Init);
+    h1Init.textContent = 'All Done!';
+    card.prepend(h1Init);
+
+    labelEl.textContent = 'Enter Initials: ';
+    inputGroup.appendChild(labelEl);
+    
+    inputGroup.appendChild(inputEl);
+    inputEl.setAttribute("type", "text");
+    inputEl.setAttribute("name", "initials");
+    inputEl.setAttribute("id", "initials");
+
+    b1Sub.textContent = "Submit";
+    submit.appendChild(b1Sub);
+}
 
 b1Start.addEventListener("click",startQuiz);
+
+b1Sub.addEventListener('click', function(event) {
+    event.preventDefault();
+    var initials = document.querySelector('#initials').value;
+    localStorage.setItem('initials', initials);
+    highScores();
+});
+  
