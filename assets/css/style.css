@@ -44,7 +44,6 @@
     width: 50%;
     text-align: left;
     margin: auto;
-    
 }
 
 #A button {
@@ -116,7 +115,7 @@ input[type="text"]:focus {
     border:1px solid #5AB0DB;
 }
 
-#submit button {
+#submit button, #goBack button, #clear button {
     padding: 8px 15px;
     margin: 5px;
     cursor: pointer;
@@ -124,6 +123,53 @@ input[type="text"]:focus {
     background-color: #247BA0;
     color: white;
     border-radius: 8px;
+    text-align: center;
+    width: 175px;
+}
+
+ol {
+    font-family: verdana;
+    width: 50%;
+    margin: 10px auto;
     text-align: left;
-    width: 85px;
+    font-size: large;
+    background-color: rgb(205, 190, 218);
+}
+
+.close {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    text-align: left;
+    margin: auto;
+}
+
+/* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
+@media screen and (max-width: 575px) {
+
+    #start button {
+        width: 50%;
+    }
+
+    #A button {
+        width: 100%;
+    }
+    
+    #B button, #C button, #D button {
+        width: 100%;
+    }
+
+    #submit button, #goBack button, #clear button {
+        width: 50%;
+    }
+
+    .close {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        text-align: left;
+        margin: auto 100px;
+    }
 }

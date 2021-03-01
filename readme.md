@@ -1,42 +1,108 @@
-# 04 Web APIs: Code Quiz
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+***
+***
+***
+*** To avoid retyping too much info. Do a search and replace for the following:
+*** github_username, repo_name, twitter_handle, email, project_title, project_description
+-->
 
-As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
-## User Story
 
-```
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## Acceptance Criteria
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-```
 
-The following animation demonstrates the application functionality:
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/rookoyole/codequiz">
+    <img src="./assets/images/Profile-Pic.jpg" alt="Logo" width="80" height="80">
+  </a>
 
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
+  <h3 align="center">Javascript Code Quiz</h3>
 
-### Review
+  <p align="center">
+    UA Bootcamp - Module 4 Challenge
+        <br />
+        <a href="https://github.com/rookoyole/codequiz"><strong>Explore the docs »</strong></a>
+        <br />
+        <br />
+        <a href="https://github.com/rookoyole/codequiz">View Demo</a>
+        ·
+        <a href="https://github.com/rookoyole/codequiz/issues">Report Bug</a>
+        ·
+        <a href="https://github.com/rookoyole/codequiz/issues">Request Feature</a>
+  </p>
+</p>
 
-You are required to submit the following for review:
 
-* The URL of the functional, deployed application.
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#project-links">Project Links</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](assets/images/screenshot.png)
+<br />
+The purpose of this project was to create a multiple choice code quiz, with a countdown timer and high scores list.
+
+Features:
+* DOM updated program
+* Score based on time left when all questions answered; 10 seconds subracted when a wrong answer is selected
+* 75 second countdown timer
+* Initials and score stored in browser local storage
+* Selected answers checked after selected
+
+<!-- PROJECT LINKS -->
+## Project Links
+
+Hosted Link: [https://rookoyole.github.io/codequiz/](https://rookoyole.github.io/codequiz/)
+
+Repository Link: [https://github.com/rookoyole/codequiz](https://github.com/rookoyole/codequiz)
+
+<!-- CONTACT -->
+## Contact
+
+Kyle Ryan - rookoyole@gmail.com
+
+Template from: https://github.com/othneildrew/Best-README-Template/blob/master/README.md
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/rookoyole/codequiz.svg?style=for-the-badge
+[contributors-url]: https://github.com/rookoyole/codequiz/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/rookoyole/codequiz.svg?style=for-the-badge
+[forks-url]: https://github.com/rookoyole/codequiz/network/members
+[stars-shield]: https://img.shields.io/github/stars/rookoyole/codequiz.svg?style=for-the-badge
+[stars-url]: https://github.com/rookoyole/codequiz/stargazers
+[issues-shield]: https://img.shields.io/github/issues/rookoyole/codequiz.svg?style=for-the-badge
+[issues-url]: https://github.com/rookoyole/codequiz/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: www.linkedin.com/in/kyle-ryan-5b526023
+[product-screenshot]: assets/images/screenshot.png

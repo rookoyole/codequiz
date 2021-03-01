@@ -2,7 +2,6 @@
 var body = document.body;
 
 // select all elements
-var scoreDiv = document.getElementById("scores");
 var timer = document.getElementById("timer");
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
@@ -15,6 +14,9 @@ var result = document.getElementById("result");
 var card = document.getElementById("card");
 var inputGroup = document.getElementById("input-group");
 var labelEl = document.getElementById("enter");
+var list = document.getElementById("list");
+var goBack = document.getElementById("goBack");
+var clear = document.getElementById("clear");
 
 // create our questions
 var questions = [
@@ -62,6 +64,22 @@ var currentQuestion = 0;
 var timeLeft = 75;
 var score = 0;
 
+// Create buttons for question
+var b1Q1 = document.createElement("BUTTON");
+var b1Q2 = document.createElement("BUTTON");
+var b1Q3 = document.createElement("BUTTON");
+var b1Q4 = document.createElement("BUTTON");
+var b1Sub = document.createElement("BUTTON");
+var backBut = document.createElement("BUTTON");
+var clearBut = document.createElement("BUTTON");
+
+var h1Init = document.createElement('h1');
+var h3Init = document.createElement('h3');
+var inputEl = document.createElement("INPUT");
+var hsEl = document.createElement("h1");
+var newScore = document.createElement("ol");
+var initials;
+
 var h1Start = document.createElement('h1');
 // We add text by using the `textContent` property
 h1Start.textContent = 'Coding Quiz Challenge';
@@ -70,24 +88,13 @@ start.appendChild(h1Start);
 // Create header for starting information
 var h3Start = document.createElement('h3');
 h3Start.textContent =
-  'Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize you score/time by ten seconds!';
+'Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize you score/time by ten seconds!';
 start.appendChild(h3Start);
 // Create start button
 var b1Start = document.createElement("BUTTON");
 // Add text to button and append to div
 b1Start.textContent = "Start Quiz";
 start.appendChild(b1Start);
-// Create buttons for question
-var b1Q1 = document.createElement("BUTTON");
-var b1Q2 = document.createElement("BUTTON");
-var b1Q3 = document.createElement("BUTTON");
-var b1Q4 = document.createElement("BUTTON");
-var b1Sub = document.createElement("BUTTON");
-
-var h1Init = document.createElement('h1');
-var h3Init = document.createElement('h3');
-var inputEl = document.createElement("INPUT");
-//var labelEl = document.createElement("LABEL");
 
 // Start quiz
 function startQuiz(){
@@ -115,24 +122,30 @@ function showButtons() {
 function countdown() {
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function() {
-      // As long as the `timeLeft` is greater than 1
-      if (timeLeft > 1) {
-        // Set the `textContent` of `timerEl` to show the remaining seconds
-        timer.textContent = 'Time: ' + timeLeft;
-        // Decrement `timeLeft` by 1
-        timeLeft--;
-      } else {
-        // Once `timeLeft` gets to 0, set `timer` to an empty string
-        timer.textContent = '';
-        // Use `clearInterval()` to stop the timer
-        clearInterval(timeInterval);
-      }
+      
+        //while (!(currentQuestion === lastQuestion)) {
+          
+      
+            // As long as the `timeLeft` is greater than 1
+            if (timeLeft > 1) {
+                // Set the `textContent` of `timerEl` to show the remaining seconds
+                timer.textContent = 'Time: ' + timeLeft;
+                // Decrement `timeLeft` by 1
+                timeLeft--;
+            } else {
+                // Once `timeLeft` gets to 0, set `timer` to an empty string
+                timer.textContent = '';
+                // Use `clearInterval()` to stop the timer
+                clearInterval(timeInterval);
+            }
+        //}
     }, 1000);
+    //timer.textContent = '';
+    //clearInterval(timeInterval);
 }
 
 function checkAnswer(answer){
     if (answer == questions[currentQuestion].correct) {
-        //score++;
         // Message indicating the answer is correct
         answerIsCorrect();
     } else {
@@ -171,6 +184,8 @@ function answerIsWrong(){
 // Show final score and submit initials
 function finalScore() {
     h3Init.textContent = 'Your final score is ' + timeLeft + '.';
+    score = timeLeft;
+    localStorage.setItem('score', score);
     card.prepend(h3Init);
     h1Init.textContent = 'All Done!';
     card.prepend(h1Init);
@@ -187,12 +202,36 @@ function finalScore() {
     submit.appendChild(b1Sub);
 }
 
+
+
+
+  
+// Scores page
+function highScores(){
+    quiz.style.display = "none";
+    card.style.display = "none";
+
+    hsEl.textContent = 'High Scores';
+    highScore.prepend(hsEl);
+
+     // Retrieve the last email and password from localStorage using `getItem()`
+    newScore.textContent = "1. " + localStorage.getItem('initials') + " - " + localStorage.getItem('score');
+    list.appendChild(newScore);
+
+    // Create final buttons
+    backBut.textContent = "Go Back";
+    goBack.appendChild(backBut);
+    clearBut.textContent = "Clear High Scores";
+    clear.appendChild(clearBut);
+}
+
 b1Start.addEventListener("click",startQuiz);
 
 b1Sub.addEventListener('click', function(event) {
     event.preventDefault();
-    var initials = document.querySelector('#initials').value;
+    initials = document.querySelector('#initials').value;
     localStorage.setItem('initials', initials);
     highScores();
 });
-  
+
+
