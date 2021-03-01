@@ -78,6 +78,7 @@ Features:
 * 75 second countdown timer
 * Initials and score stored in browser local storage
 * Selected answers checked after selected
+* Updated styling based on screen size
 
 <!-- PROJECT LINKS -->
 ## Project Links
